@@ -8,85 +8,60 @@ import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import passUserToView from '../../middleware/passUserToView.js'
 import passErrorToView from '../../middleware/passErrorToView.js'
+import bodyParser from '../../middleware/bodyParser.js'
+
+// Routers
 import bookReviewsRouter from '../../controllers/bookreviews.js'
 import authController from '../../controllers/auth.js'
 import userRouter from '../../controllers/users.js'
-import User from '../../models/User.js'
-import BookClub from '../../models/BookClub.js'
-import BookReview from '../../models/BookReview.js'
-import bodyParser from '../../middleware/bodyParser.js'
-
-// Variables
 
 const app = express()
-const port = process.env.PORT || 3000
 
 // Middleware
 app.use(methodOverride('_method'))
-app.use(bodyParser)
-app.use((req,res,next) =>{
-console.log(req.method + " " + req.url)
-console.log(req.body)
-next()
-
-})
-
-
+app.use(bodyParser) // Similar to express.json(), this middleware instead captures urlencoded body types (forms) on requests and transforms the data onto the req.body key
+app.use(morgan('dev'))
+app.use(express.static('public')) // This line serves static files to the client (CSS/JS/Images etc)
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URI
   })
 }))
-app.use(express.static('public'))
 
 app.use(passUserToView)
 app.use(passErrorToView)
+
+// Routes
+
+// Home page
+app.get('/', (req,res) => {
+  return res.render('index.ejs')
+})
+
+// Routers
 app.use('/', bookReviewsRouter)
 app.use('/', authController)
 app.use('/', userRouter)
 
-// Routes
-// Home page
-app.get('/', (req,res) => {
-return res.render('index.ejs', {
+// 404 handler
+app.use('/{*any}', (req, res) =>{
+  return res.status(404).render('not-found.ejs')
+})
 
-})
-})
 
 // ! Listen
 async function startServers(){
-    try {
-      // Connect to MongoDB
-      await mongoose.connect(process.env.MONGODB_URI)
-      console.log(`🔒 Database connection established`)
-    // Connect the Express Server
-} catch (error) {
-  console.log(error)
-}
+  try {
+    // Connect to MongoDB
+    await mongoose.connect(process.env.MONGODB_URI)
+    console.log(`🔒 Database connection established`)
+  } catch (error) {
+    console.log(error)
+  }
 }
 startServers()
 
-
-// 404 handler
-app.use ((req, res) =>{
-  res.status(404).render('not-found.ejs')
-})
-
 export const handler = serverless(app)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

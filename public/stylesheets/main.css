@@ -391,4 +391,40 @@ form.form input[name="tags"] {
     left: 0;
     width: 100%;
   }
+  footer {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .reviews-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .review-column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    background-color: #fffaf1;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .review-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .review-list li {
+    margin-bottom: 1rem;
+  }
+  
+  .small-text {
+    font-size: 0.9rem;
+    color: #666;
+  }
   

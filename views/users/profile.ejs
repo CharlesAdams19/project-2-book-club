@@ -26,26 +26,44 @@
         </form>
       </section>
 
-      <% if (userReviews && userReviews.length > 0) { %>
-        <section class="reviews">
+      <section class="reviews-columns">
+        <div class="your-reviews">
           <h2 class="center-text">Your Reviews</h2>
-          <ul class="review-list">
-            <% userReviews.forEach(review => { %>
-              <li>
-                <a href="/bookreviews/<%= review._id %>"><%= review.bookName %></a>
-                <div class="review-controls">
-                  <a href="/bookreviews/<%= review._id %>/edit">✏️ Edit</a>
-                  <form action="/bookreviews/<%= review._id %>?_method=DELETE" method="POST" style="display:inline;">
-                    <button type="submit" class="delete-btn">🗑️ Delete</button>
-                  </form>
-                </div>
-              </li>
-            <% }) %>
-          </ul>
-        </section>
-      <% } else { %>
-        <p class="center-text">No reviews yet. Get started by creating one!</p>
-      <% } %>
+          <% if (userReviews.length > 0) { %>
+            <ul class="review-list">
+              <% userReviews.forEach(review => { %>
+                <li>
+                  <a href="/bookreviews/<%= review._id %>"><%= review.bookName %></a>
+                  <div class="review-controls">
+                    <a href="/bookreviews/<%= review._id %>/edit">✏️ Edit</a>
+                    <form action="/bookreviews/<%= review._id %>?_method=DELETE" method="POST" style="display:inline;">
+                      <button type="submit" class="delete-btn">🗑️ Delete</button>
+                    </form>
+                  </div>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p class="center-text">You haven’t written any reviews yet.</p>
+          <% } %>
+        </div>
+
+        <div class="club-reviews">
+          <h2 class="center-text">Other Club Reviews</h2>
+          <% if (clubReviews.length > 0) { %>
+            <ul class="review-list">
+              <% clubReviews.forEach(review => { %>
+                <li>
+                  <a href="/bookreviews/<%= review._id %>"><%= review.bookName %></a>
+                  <p>by <%= review.reviewer?.name || review.reviewer?.email %></p>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p class="center-text">No other reviews yet in your club.</p>
+          <% } %>
+        </div>
+      </section>
     </main>
 
     <footer class="fixed-footer">
