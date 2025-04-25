@@ -54,6 +54,8 @@ router.post('/invite', isLoggedIn, async (req, res, next) => {
         user.bookClub = newClubId
         await user.save()
 
+        req.session.user.bookClub = newClubId
+
         // Add user to new club if not already a member
         if (!bookClub.members.includes(userId)) {
             bookClub.members.push(userId)
