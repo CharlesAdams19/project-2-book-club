@@ -5,7 +5,7 @@ body {
   }
 
   body {
-    font-size: 1.25rem; /* around 20px, feel free to adjust */
+    font-size: 1.25rem; 
     line-height: 1.6;
   }
 
@@ -21,13 +21,12 @@ body {
     font-size: 1.5rem;
   }
   
-/* Layout and spacing */
+
 main {
     padding-top: 60px;
     padding-left: 20px;
   }
   
-  /* Basic nav styling */
   nav {
     position: fixed;
     top: 10px;
@@ -61,7 +60,6 @@ main {
     font-size: 1rem;
   }
   
-  /* Fullscreen nav overlay */
   #nav-overlay {
     display: none;
     position: fixed;
@@ -77,17 +75,14 @@ main {
     align-items: center;
   }
   
-  /* Show when nav is open */
   #nav-overlay.visible {
     display: flex;
   }
   
-  /* Hide main content when nav is open */
   body.nav-open #main-content {
     display: none;
   }
   
-  /* Close button inside nav overlay */
   #close-nav {
     position: absolute;
     top: 1rem;
@@ -105,14 +100,13 @@ body {
     color: #333;
   }
   
-  /* Header & Branding */
   h1, h2, h3 {
     color: #e88d67;
     text-align: center
   }
 
   ::placeholder {
-    font-family: 'Caveat', cursive; /* or whichever font you're using */
+    font-family: 'Caveat', cursive; 
     font-size: 1.1rem;
     color: #999; 
     input,
@@ -122,7 +116,6 @@ textarea {
 
   }
   
-  /* Nav Overlay */
   #nav-overlay {
     background-color: #e88d67; 
     color: #fff;
@@ -159,7 +152,6 @@ textarea {
     font-size: 1.5rem;
   }
   
-  /* Nav Toggle Button */
   #nav-toggle {
     background-color:#e88d67;
     border: 2px solid white;
@@ -169,22 +161,19 @@ textarea {
     border-radius: 5px;
   }
   
-  /* Close button inside nav */
   #close-nav {
     color: white;
     font-size: 2rem;
   }
   
-  /* Main layout tweaks */
   main {
     padding-top: 80px;
     padding-left: 40px;
   }
   
-  /* Button styling */
   button,
   input[type="submit"] {
-    background-color: #748e63; /* sage green */
+    background-color: #748e63; 
     border: none;
     padding: 0.5rem 1rem;
     color: white;
@@ -197,7 +186,6 @@ textarea {
     background-color: #5c714a;
   }
   
-  /* Links */
   a {
     color: #e88d67;
   }
@@ -261,7 +249,6 @@ form.form input[name="tags"] {
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   }
   
-/* Headings */
 .form-title {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -269,7 +256,6 @@ form.form input[name="tags"] {
     color: #f47057;
   }
   
-  /* Buttons layout */
   .controls {
     display: flex;
     justify-content: center;
@@ -294,7 +280,7 @@ form.form input[name="tags"] {
   }
   
   .delete-btn {
-    background-color: #444; /* ✅ more neutral than green */
+    background-color: #444; 
     color: white;
   }
   
@@ -350,8 +336,7 @@ form.form input[name="tags"] {
   form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem; /* Adds vertical spacing between elements */
-    max-width: 600px;
+    gap: 1.2rem; 
     margin: 0 auto;
   }
   .center-text {

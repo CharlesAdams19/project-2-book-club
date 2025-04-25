@@ -1,13 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
 
-// // Comment Schema (child document)
-// const Commentschema = new mongoose.Schema ({
-//     content: {type: String, required: true},
-//     author: {type: Schema.Types.ObjectId, ref: "User", required: true}
-// },{
-// timestamps:true 
-// })
-
 
 // BookReview Schema (parent document)
 const BookReviewSchema = new mongoose.Schema ({

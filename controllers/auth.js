@@ -138,11 +138,6 @@ router.post('/auth/login', isLoggedOut, async (req, res) => {
     }
 })
 
-// login the user by adding the details from the form to the req.session 
-
-
-
-
 
 // Log out user
 router.get('/auth/log-out', (req, res) => {
